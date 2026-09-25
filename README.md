@@ -20,10 +20,6 @@ All work is in a single notebook: **`EDA_Phase1_Amogh.ipynb`**
 8. Multivariate analysis (4 plots)
 
 ## Phase 2 – Statistical analysis (1D/2D/3D) and clustering
-Notebook is kept in Python (same notebook as Phase 1); wherever the brief names an R function, the
-Python equivalent is used and noted in-line (e.g. `e1071::skewness` → `scipy.stats.skew`,
-`prop.table()` → `pd.crosstab(normalize=...)`, `aggregate()` → `groupby().agg()`, `hclust()`/`cutree()`
-→ `scipy.cluster.hierarchy.linkage`/`fcluster`, `kmeans()` → `sklearn.cluster.KMeans`).
 
 - Summary statistics table: mean, median, min, max, range, variance, std dev, IQR, skewness, kurtosis
 - Frequency & relative frequency distribution (categorical) — pie chart + bar plot
