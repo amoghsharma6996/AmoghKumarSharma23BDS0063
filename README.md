@@ -1,45 +1,67 @@
 # AmoghKumarSharma23BDS0063
 
-## BCSE331L – Exploratory Data Analysis (EDA)
-
 **Name:** Amogh Kumar Sharma
 **Reg No:** 23BDS0063
+**Course:** BCSE331L – Exploratory Data Analysis (VIT)
 
-Dataset: `student-mat.csv` (395 students, 33 attributes) — [source](https://raw.githubusercontent.com/salemprakash/EDA/main/Data/student-mat.csv)
+# EDA on Student Performance Dataset (Phase 1, Phase 2 and Phase 3a)
 
-All work is in a single notebook: **`EDA_Phase1_Amogh.ipynb`**
+Dataset: `student-mat.csv` (395 students, 33 attributes) – student math performance data.
 
-## Phase 1 – EDA basics
-1. Loading the dataset
-2. Basic statistical analysis (`describe()`, mean/median/mode/std/variance)
-3. Handling missing data
-4. Data cleaning (duplicates, inconsistent categories)
-5. Data transformation (derived columns, encoding)
+All three phases are in **one notebook**, so the code, outputs and conclusions can be read from top to bottom.
+
+## Files
+
+| File | Description |
+|------|-------------|
+| `EDA_Phase1_Amogh.ipynb` | Main notebook – Phase 1, Phase 2 and Phase 3a, with all outputs and plots |
+| `student-mat (1).csv` | Raw dataset |
+| `README.md` | This file |
+
+> The notebook first looks for a file named `student-mat.csv` in the same folder. If it is not found,
+> it automatically downloads the dataset from the GitHub link given in the assignment, so it also runs
+> in a fresh Google Colab session.
+
+## What the notebook does
+
+### Phase 1 – Basic EDA
+1. Load the data
+2. Basic statistics (`describe()`, mean, median, mode, standard deviation, variance)
+3. Handle missing data
+4. Data cleaning (duplicates, inconsistent values)
+5. Data transformation (`avg_grade`, `performance` level, yes/no columns turned into 1/0)
 6. Univariate analysis (4 plots)
 7. Bivariate analysis (4 plots)
 8. Multivariate analysis (4 plots)
 
-## Phase 2 – Statistical analysis (1D/2D/3D) and clustering
+### Phase 2 – Statistical analysis and clustering
+9. 1D statistics (summary statistics, frequency tables, histogram, box plot)
+10. 2D statistics (contingency tables, grouped statistics, Pearson and Spearman correlation, regression line)
+11. 3D statistics (correlation matrix, pairs plot, 3D scatter plot, multiple regression)
+12. K-Means clustering (standardizing, elbow method, K = 3)
+13. Hierarchical clustering (Single, Complete, Average and Ward linkage, dendrograms)
 
-- Summary statistics table: mean, median, min, max, range, variance, std dev, IQR, skewness, kurtosis
-- Frequency & relative frequency distribution (categorical) — pie chart + bar plot
-- Binned frequency distribution (numerical) — histogram + box plot
-- Contingency table with row/column percentages (two categorical variables)
-- Stacked and grouped bar plots
-- Grouped summary stats (categorical × numerical) via `groupby().agg()`
-- Side-by-side box plots + violin plot
-- Pearson & Spearman correlation + scatter plot with regression line
-- Two categorical + one numerical: grouped stats, faceted box plot, grouped bar chart with error bars
-- One categorical + two numerical: colored scatter plot + per-category correlation matrix
-- Correlation matrix (3+ numeric features) + heatmap
-- Pairs plot / scatterplot matrix
-- 3D (multivariate): correlation matrix, 3D scatter plot, multiple linear regression
-- K-Means clustering — missing-value/target checks, standardization, k=2 run, WCSS elbow (k=1..10),
-  final clustering at the elbow-recommended k, PCA visualization, cluster profiling
-- Hierarchical clustering — Euclidean distance, single/complete/average/Ward linkage dendrograms,
-  `cutree`-style 3-cluster assignment, comparison with K-Means
+### Phase 3a – Principal Component Analysis (PCA)
+15. Select the 16 numeric columns and standardize them
+16. Apply PCA and calculate the variance explained by each component
+17. Scree plot and cumulative variance plot (Kaiser rule and 80% rule)
+18. Loadings table and heatmap (what each component is made of)
+19. Students plotted on the first components (2D and 3D), coloured by performance level
+20. Biplot
+21. K-Means (K = 3) repeated on the PCA scores and compared with the Phase 2 clusters
+
+**Main findings from Phase 3a**
+- 9 components are enough to keep about 82% of the information (16 columns reduced to 9).
+- **PC1** is academic performance (`G1`, `G2`, `G3` positive, `failures` negative).
+- **PC2** is social life (`Walc`, `Dalc`, `goout`, `freetime`).
+- **PC3** is parents' education (`Medu`, `Fedu`).
+- `Low`, `Medium` and `High` performers separate clearly along PC1.
+- K-Means on the PCA scores agrees with the Phase 2 K-Means groups for about 95% of students, with a slightly better silhouette score (0.138 vs 0.113).
 
 ## Requirements
+
+`pandas`, `numpy`, `matplotlib`, `seaborn`, `scipy`, `scikit-learn`
+
 ```bash
 pip install pandas numpy matplotlib seaborn scipy scikit-learn
 ```
